@@ -43,7 +43,7 @@ inquirer.prompt([
 
 ]).then(function (liri) {
   var liriFirstArg = liri.first;
-  var liriSecondArg = liri.second;
+  var liriSecondArg = liri.second.trim();
   // Check the first argument to decide what function to run
   switch (liriFirstArg) {
     case 'my-tweets':
