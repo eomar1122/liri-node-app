@@ -62,7 +62,7 @@ inquirer.prompt([
       doWhatItSays();
       break;
 
-      defult:
+      default:
       console.log("No thing to show! Please check your entries!");
   }
 });
@@ -130,12 +130,10 @@ function movieInfo(movieName) {
   // Then run a request to the OMDB API with the movie specified
   var queryUrl = `http://www.omdbapi.com/?t=${movieName}&y=&plot=short&apikey=trilogy`;
   // This line is just to help us debug against the actual URL.
-  // console.log(queryUrl);
   // Then create a request to the queryUrl
   request(queryUrl, function (error, response, body) {
     // If the request is successful
     if (!error && response.statusCode === 200) {
-      // Then log the Release Year for the movie
       // console.log(JSON.parse(body));
       console.log("\n==============================================\n");
       console.log(`------- ${movieName} movie information -------\n`);
@@ -180,7 +178,7 @@ function doWhatItSays() {
       case 'movie-this':
         movieInfo(dataArr[1]);
         break;
-        defult:
+        default:
         console.log("No thing to show! Please check your entries!")
     }
   });
