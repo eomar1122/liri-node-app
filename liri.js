@@ -62,7 +62,7 @@ inquirer.prompt([
       doWhatItSays();
       break;
 
-      defult:
+      default:
       console.log("No thing to show! Please check your entries!");
   }
 });
@@ -180,7 +180,7 @@ function doWhatItSays() {
       case 'movie-this':
         movieInfo(dataArr[1]);
         break;
-        defult:
+        default:
         console.log("No thing to show! Please check your entries!")
     }
   });
