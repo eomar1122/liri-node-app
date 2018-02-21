@@ -9,9 +9,9 @@ var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 var inquirer = require("inquirer");
 
-var liriFirstArg = '';
+// var liriFirstArg = '';
 // var nodeArg = process.argv;
-var liriSecondArg = '';
+// var liriSecondArg = '';
 
 // // Loop through all the words in the node argument
 // for (var i = 3; i < nodeArg.length; i++) {
@@ -42,8 +42,8 @@ inquirer.prompt([
   }
 
 ]).then(function (liri) {
-  liriFirstArg = liri.first;
-  liriSecondArg = liri.second.trim();
+  var liriFirstArg = liri.first;
+  var liriSecondArg = liri.second.trim();
   checkInput(liriFirstArg, liriSecondArg);
 });
 
