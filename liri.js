@@ -9,9 +9,9 @@ var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 var inquirer = require("inquirer");
 
-// var liriFirstArg = process.argv[2];
+var liriFirstArg = '';
 // var nodeArg = process.argv;
-// var liriSecondArg = '';
+var liriSecondArg = '';
 
 // // Loop through all the words in the node argument
 // for (var i = 3; i < nodeArg.length; i++) {
@@ -42,29 +42,9 @@ inquirer.prompt([
   }
 
 ]).then(function (liri) {
-  var liriFirstArg = liri.first;
-  var liriSecondArg = liri.second.trim();
-  // Check the first argument to decide what function to run
-  switch (liriFirstArg) {
-    case 'my-tweets':
-      getTweets();
-      break;
-
-    case 'spotify-this-song':
-      songInfo(liriSecondArg);
-      break;
-
-    case 'movie-this':
-      movieInfo(liriSecondArg);
-      break;
-
-    case 'do-what-it-says':
-      doWhatItSays();
-      break;
-
-      default:
-      console.log("No thing to show! Please check your entries!");
-  }
+  liriFirstArg = liri.first;
+  liriSecondArg = liri.second.trim();
+  checkInput(liriFirstArg, liriSecondArg);
 });
 
 
@@ -165,21 +145,32 @@ function doWhatItSays() {
     // Remove the double quotes from string the second argument
     dataArr[1] = dataArr[1].substring(1, dataArr[1].length - 1);
     // console.log(dataArr[1]);
-
-    switch (dataArr[0]) {
-      case 'my-tweets':
-        getTweets();
-        break;
-
-      case 'spotify-this-song':
-        songInfo(dataArr[1]);
-        break;
-
-      case 'movie-this':
-        movieInfo(dataArr[1]);
-        break;
-        default:
-        console.log("No thing to show! Please check your entries!")
-    }
+    checkInput(dataArr[0], dataArr[1])
   });
+}
+
+// Check the first argument to decide what function to run
+function checkInput(liriFirstArg, liriSecondArg) {
+  
+  switch (liriFirstArg) {
+    case 'my-tweets':
+      getTweets();
+      break;
+
+    case 'spotify-this-song':
+      songInfo(liriSecondArg);
+      break;
+
+    case 'movie-this':
+      movieInfo(liriSecondArg);
+      break;
+
+    case 'do-what-it-says':
+      doWhatItSays();
+      break;
+
+    default:
+      console.log("No thing to show! Please check your entries!");
+  }
+
 }
